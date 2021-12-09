@@ -1,10 +1,8 @@
 package com.tests.r1vs_allstreaming.Models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
 public class Type {
 
     @Id
