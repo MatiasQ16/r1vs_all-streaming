@@ -22,6 +22,10 @@ public class Rental {
     @Column
     private Date expiration;
 
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
     public long getId() {
         return id;
     }

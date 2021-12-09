@@ -1,6 +1,7 @@
 package com.tests.r1vs_allstreaming.Models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Status {
@@ -11,6 +12,9 @@ public class Status {
 
     @Column
     private String status;
+
+    @OneToMany(mappedBy = "status")
+    private List<Account> accounts;
 
     public long getId() {
         return id;

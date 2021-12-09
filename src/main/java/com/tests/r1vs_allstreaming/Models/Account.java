@@ -1,6 +1,7 @@
 package com.tests.r1vs_allstreaming.Models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Account {
@@ -14,6 +15,17 @@ public class Account {
 
     @Column
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    private Type type;
+
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private Status status;
+
+    @OneToMany(mappedBy = "account")
+    private List<Rental> rentals;
 
     public long getId() {
         return id;
