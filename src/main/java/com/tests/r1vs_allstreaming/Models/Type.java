@@ -1,6 +1,7 @@
 package com.tests.r1vs_allstreaming.Models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -10,11 +11,21 @@ public class Type {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
+    @NotEmpty
+    @Column(nullable = false)
     private String type;
 
     @OneToMany(mappedBy = "type")
     private List<Account> accounts;
+
+    public Type() {
+    }
+
+    public Type(long id, String type, List<Account> accounts) {
+        this.id = id;
+        this.type = type;
+        this.accounts = accounts;
+    }
 
     public long getId() {
         return id;
