@@ -10,4 +10,6 @@ public interface AccountService {
     public Account save(Account account);
 
     public List<Account> findAllByType(Long typeId);
+
+    public Account findById(Long id);
 }

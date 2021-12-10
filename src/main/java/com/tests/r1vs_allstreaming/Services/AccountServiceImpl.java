@@ -43,4 +43,9 @@ public class AccountServiceImpl implements AccountService {
     public List<Account> findAllByType(Long typeId) {
         return accountRepository.findAll().stream().filter((account) -> account.getType().getId() == typeId).collect(Collectors.toList());
     }
+
+    @Override
+    public Account findById(Long id) {
+        return accountRepository.findById(id).orElse(null);
+    }
 }
