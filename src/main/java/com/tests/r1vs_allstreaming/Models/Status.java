@@ -15,11 +15,12 @@ public class Status {
     @Column(nullable = false)
     private String status;
 
-    @OneToMany(mappedBy = "status")
+    @OneToMany(mappedBy = "status", fetch = FetchType.LAZY)
     private List<Account> accounts;
 
     public Status() {
     }
+
 
     public Status(long id, String status, List<Account> accounts) {
         this.id = id;

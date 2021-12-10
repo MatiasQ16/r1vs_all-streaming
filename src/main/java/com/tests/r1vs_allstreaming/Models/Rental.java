@@ -25,7 +25,7 @@ public class Rental {
     @Column(nullable = false)
     private Date expiration;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     private Account account;
 

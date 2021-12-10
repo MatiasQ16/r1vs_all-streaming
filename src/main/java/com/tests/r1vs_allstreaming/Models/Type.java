@@ -15,7 +15,7 @@ public class Type {
     @Column(nullable = false)
     private String type;
 
-    @OneToMany(mappedBy = "type")
+    @OneToMany(mappedBy = "type", fetch = FetchType.LAZY)
     private List<Account> accounts;
 
     public Type() {
