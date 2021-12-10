@@ -2,6 +2,7 @@ package com.tests.r1vs_allstreaming.Models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,10 +23,10 @@ public class Status {
     }
 
 
-    public Status(long id, String status, List<Account> accounts) {
-        this.id = id;
+    public Status(String status) {
+
         this.status = status;
-        this.accounts = accounts;
+        this.accounts = new ArrayList<>();
     }
 
     public long getId() {

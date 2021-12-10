@@ -2,6 +2,7 @@ package com.tests.r1vs_allstreaming.Models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,10 +22,9 @@ public class Type {
     public Type() {
     }
 
-    public Type(long id, String type, List<Account> accounts) {
-        this.id = id;
+    public Type(String type) {
         this.type = type;
-        this.accounts = accounts;
+        this.accounts = new ArrayList<>();
     }
 
     public long getId() {
