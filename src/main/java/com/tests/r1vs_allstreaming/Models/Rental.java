@@ -4,6 +4,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -14,16 +16,14 @@ public class Rental {
     private long id;
 
     @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     @Column(nullable = false)
-    private Date date;
+    private LocalDateTime date;
 
     @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     @Column(nullable = false)
-    private Date expiration;
+    private LocalDateTime expiration;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
@@ -32,7 +32,11 @@ public class Rental {
     public Rental() {
     }
 
-    public Rental(long id, Date date, Date expiration, Account account) {
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Rental(long id, LocalDateTime date, LocalDateTime expiration, Account account) {
         this.id = id;
         this.date = date;
         this.expiration = expiration;
@@ -47,19 +51,19 @@ public class Rental {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public Date getExpiration() {
+    public LocalDateTime getExpiration() {
         return expiration;
     }
 
-    public void setExpiration(Date expiration) {
+    public void setExpiration(LocalDateTime expiration) {
         this.expiration = expiration;
     }
 }

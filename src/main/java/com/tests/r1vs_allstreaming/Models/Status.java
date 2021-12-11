@@ -20,6 +20,7 @@ public class Status {
     private List<Account> accounts;
 
     public Status() {
+        this.accounts = new ArrayList<>();
     }
 
 

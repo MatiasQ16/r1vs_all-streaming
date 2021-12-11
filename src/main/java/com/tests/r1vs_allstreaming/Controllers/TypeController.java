@@ -22,16 +22,31 @@ public class TypeController {
     @Autowired
     private AccountService accountService;
 
+    /**
+     * The getTypes method obtain the types from database
+     * @return ResponseEntity<?> With the information and HttpStatus
+     */
     @GetMapping("")
-    public ResponseEntity<List<Type>> getTypes() {
-        return new ResponseEntity<List<Type>>(typeService.findAll(), HttpStatus.OK);
+    public ResponseEntity<?> getTypes() {
+        return new ResponseEntity<>(typeService.findAll(), HttpStatus.OK);
     }
 
+    /**
+     * The createType method is used for create a type on database
+     * @param type
+     * @return ResponseEntity<?> With the information and HttpStatus
+     */
     @PostMapping("")
     public ResponseEntity<Type> createType(@Valid @RequestBody Type type) {
         return new ResponseEntity<Type>(typeService.save(type), HttpStatus.CREATED);
     }
 
+    /**
+     * The updateType method update a type on database
+     * @param type
+     * @param typeId
+     * @return ResponseEntity<?> With the information and HttpStatus
+     */
     @PutMapping("/{typeId}")
     public ResponseEntity<?> updateType(@Valid @RequestBody Type type, @PathVariable Long typeId) {
         Type actualType = typeService.findById(typeId);
@@ -42,8 +57,13 @@ public class TypeController {
         return new ResponseEntity<Type>(typeService.save(actualType), HttpStatus.OK);
     }
 
+    /**
+     * The deleteType method delete a type on database
+     * @param typeId
+     * @return ResponseEntity<?> With informations and HttpStatus
+     */
     @DeleteMapping("/{typeId}")
-    public ResponseEntity<?> deleteType(@PathVariable Long typeId) throws Exception {
+    public ResponseEntity<?> deleteType(@PathVariable Long typeId){
         Type type = typeService.findById(typeId);
 
         if (type == null) {

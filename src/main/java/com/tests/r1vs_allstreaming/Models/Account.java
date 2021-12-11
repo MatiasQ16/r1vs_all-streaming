@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -41,6 +42,7 @@ public class Account {
     private List<Rental> rentals;
 
     public Account() {
+        this.rentals = new ArrayList<>();
     }
 
     public Account(long id, String password, String email, Type type, Status status, List<Rental> rentals) {

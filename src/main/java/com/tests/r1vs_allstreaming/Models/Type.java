@@ -20,6 +20,7 @@ public class Type {
     private List<Account> accounts;
 
     public Type() {
+        this.accounts = new ArrayList<>();
     }
 
     public Type(String type) {
